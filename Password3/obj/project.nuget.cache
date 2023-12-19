@@ -1,0 +1,14 @@
+{
+  "version": 2,
+  "dgSpecHash": "GSjVXDbNpvq0lohj3qavbLQxReIMgrY0ZxHGj53V1JJwMxIO+4paRzS0ulA8DEomN8PeOspnlwEiF86O4S3CCQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Laura\\OneDrive - Aarhus universitet\\Softwareteknologi\\Trifork\\Password3\\Password3\\Password3.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Laura\\.nuget\\packages\\xunit.assert\\2.6.2\\xunit.assert.2.6.2.nupkg.sha512",
+    "C:\\Users\\Laura\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.13\\microsoft.netcore.app.host.win-x64.6.0.13.nupkg.sha512",
+    "C:\\Users\\Laura\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.13\\microsoft.aspnetcore.app.ref.6.0.13.nupkg.sha512",
+    "C:\\Users\\Laura\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.13\\microsoft.windowsdesktop.app.ref.6.0.13.nupkg.sha512",
+    "C:\\Users\\Laura\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.13\\microsoft.netcore.app.ref.6.0.13.nupkg.sha512"
+  ],
+  "logs": []
+}
