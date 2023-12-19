@@ -15,8 +15,6 @@ namespace Password3
 
             encryptionKey = (key + "ThisIsA16CharKeyThisIsA16CharKey").Substring(0, 32); // must be 32 characters long
         }
-
-
         public string Encrypt(string plainText)
         {
             if (string.IsNullOrEmpty(plainText))
@@ -44,7 +42,6 @@ namespace Password3
             return Convert.ToBase64String(encryptedBytes);
         }
 
-
         public string Decrypt(string cipherText)
         {
             if (string.IsNullOrEmpty(cipherText))
@@ -66,9 +63,7 @@ namespace Password3
             return srDecrypt.ReadToEnd();
         }
 
-
         // Unit test method using NUnit framework
-
 
         public static void TestEncryptionDecryption()
         {

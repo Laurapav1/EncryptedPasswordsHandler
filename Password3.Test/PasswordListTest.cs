@@ -1,9 +1,6 @@
-using Password3;
-using Xunit;
-
 namespace Password3.Test;
 
-public class UnitTest1
+public class PasswordListTest
 {
     private const string FilePath = "test_passwords.json";
     private const string EncryptionKey = "your_encryption_key"; // Skift denne med din faktiske nøgle
