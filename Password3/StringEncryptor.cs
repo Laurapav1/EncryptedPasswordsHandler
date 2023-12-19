@@ -1,9 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Cryptography;
+﻿using System.Security.Cryptography;
 using System.Text;
-using System.Threading.Tasks;
 // using Xunit;
 //using NUnit.Framework; // For unit testing
 
@@ -16,9 +12,10 @@ namespace Password3
 
         public StringEncryptor(string key)
         {
-            //encryptionKey = key ?? throw new ArgumentNullException(nameof(key));
+
             encryptionKey = (key + "ThisIsA16CharKeyThisIsA16CharKey").Substring(0, 32); // must be 32 characters long
         }
+
 
         public string Encrypt(string plainText)
         {

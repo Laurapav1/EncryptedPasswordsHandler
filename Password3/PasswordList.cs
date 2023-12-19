@@ -1,12 +1,6 @@
-﻿using Password3;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Linq.Expressions;
+﻿using System.Collections;
 using System.Text;
 using System.Text.Json;
-using System.Threading.Tasks;
 
 
 namespace Password3
@@ -54,7 +48,6 @@ namespace Password3
             }
         }
 
-       
 
 
         public IEnumerator<KeyValuePair<string, string>> GetEnumerator()
@@ -110,53 +103,46 @@ namespace Password3
         // Opdater DecryptFromFile metoden i PasswordList-klassen
         public void DecryptFromFile()
         {
-            try
+
+            if (!File.Exists(filePath))
             {
-                if (!File.Exists(filePath))
-                {
-                    Console.WriteLine("File does not exist or cannot be found.");
-                    return;
-                }
-
-                string encryptedJson = File.ReadAllText(filePath);
-                Dictionary<string, string> encryptedPasswords = JsonSerializer.Deserialize<Dictionary<string, string>>(encryptedJson);
-
-                // Clear existing passwords before decrypting from file
-                passwords.Clear();
-
-                // Decrypt keys and values after reading from file
-                foreach (var encryptedPassword in encryptedPasswords)
-                {
-                    try
-                    {
-                        // Dekod Base64-strengene til bytes
-                        byte[] encryptedKeyBytes = Convert.FromBase64String(encryptedPassword.Key);
-                        byte[] encryptedValueBytes = Convert.FromBase64String(encryptedPassword.Value);
-
-                        // Konverter bytes til tekst før dekryptering
-                        string encryptedKey = Encoding.UTF8.GetString(encryptedKeyBytes);
-                        string encryptedValue = Encoding.UTF8.GetString(encryptedValueBytes);
-
-                        string decryptedKey = encryptor.Decrypt(encryptedKey);
-                        string decryptedValue = encryptor.Decrypt(encryptedValue);
-
-                        passwords.Add(decryptedKey, decryptedValue);
-                        Console.WriteLine($"Passwords decrypted from file: {filePath}.");
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine($"Error while decrypting from file: {ex.Message}");
-                        continue;
-                    }
-                }
+                Console.WriteLine("File does not exist or cannot be found.");
+                return;
             }
-            catch (Exception ex)
+
+            string encryptedJson = File.ReadAllText(filePath);
+            Dictionary<string, string> encryptedPasswords = JsonSerializer.Deserialize<Dictionary<string, string>>(encryptedJson);
+
+            // Clear existing passwords before decrypting from file
+            passwords.Clear();
+
+
+            // Decrypt keys and values after reading from file
+            foreach (var encryptedPassword in encryptedPasswords)
             {
-                Console.WriteLine($"Error while decrypting from file: {ex.Message}");
-                throw;
+                try
+                {
+                    // Dekod Base64-strengene til bytes
+                    byte[] encryptedKeyBytes = Convert.FromBase64String(encryptedPassword.Key);
+                    byte[] encryptedValueBytes = Convert.FromBase64String(encryptedPassword.Value);
+
+                    // Konverter bytes til tekst før dekryptering
+                    string encryptedKey = Encoding.UTF8.GetString(encryptedKeyBytes);
+                    string encryptedValue = Encoding.UTF8.GetString(encryptedValueBytes);
+
+                    string decryptedKey = encryptor.Decrypt(encryptedKey);
+                    string decryptedValue = encryptor.Decrypt(encryptedValue);
+
+                    passwords.Add(decryptedKey, decryptedValue);
+                    Console.WriteLine($"Passwords decrypted from file: {filePath}.");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error while decrypting from file: {ex.Message}");
+                    continue;
+                }
             }
         }
-
 
 
         // Other methods for managing passwords in the dictionary

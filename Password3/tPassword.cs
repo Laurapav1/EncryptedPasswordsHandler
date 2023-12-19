@@ -3,8 +3,8 @@ public class tPassword
 {
     public const string allowedPasswordChars = "ABCDEFGHIJKLMNOPQRSTUVXYZabcdefghijklmnopqrstuvxyz0123456789!@#$%^&*()-_+=";
 
-    public tPassword(){}
-    
+    public tPassword() { }
+
     public static string ReadPasswordConsole()
     {
         string pass = new string("");

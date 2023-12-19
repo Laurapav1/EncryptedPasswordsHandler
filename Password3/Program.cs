@@ -11,8 +11,8 @@ namespace Password3
 
             if (!File.Exists("drowssapotpyrc.json"))
             {
-                Console.WriteLine("The specified file does not exist.");
-                return;
+                //create a file at pathName
+                File.Create("drowssapotpyrc.json");
             }
 
             PasswordList passwords = new PasswordList("drowssapotpyrc.json", encryptionKey);
@@ -26,19 +26,6 @@ namespace Password3
                 Console.WriteLine($"Error: {e.Message}");
                 return;
             }
-
-            //Read from file and decrypt
-            //PasswordList passwords = new PasswordList("drowssapotpyrc.json", encryptionKey);
-            //try
-            //{
-            //    passwords.Decrypt();
-            //}
-            //catch (Exception e)
-            //{
-            //    Console.WriteLine("The password is not correct. Try again!");
-            //    Console.WriteLine($"Error: {e.Message}");
-            //    return;
-            //}
 
             Console.WriteLine($"{passwords.Count()} key value pairs loaded from file {passwords.FilePath}.");
 
